@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhamad Mbaraka Abdul | Flutter Developer & IT Support</title>
+  <meta name="description" content="Muhamad Mbaraka Abdul - Bachelor of IT graduate. Flutter/Android developer building Falcon Business POS, and IT support professional with hands-on networking experience in Tanzania." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f172a'/%3E%3Ctext x='50' y='66' font-size='52' font-family='Arial' font-weight='700' text-anchor='middle' fill='%2338bdf8'%3EMA%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-light: #334155;
+      --primary: #38bdf8;
+      --accent: #22c55e;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    /* Navigation */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--surface-light);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+    .logo { font-weight: 700; color: var(--text); letter-spacing: 0.5px; }
+    .logo span { color: var(--primary); }
+    .nav-links { display: flex; gap: 22px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 0.92rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* Hero */
+    header { padding: 70px 0 56px; border-bottom: 1px solid var(--surface-light); }
+    .hero { display: flex; align-items: center; gap: 40px; flex-wrap: wrap-reverse; }
+    .hero-text { flex: 1 1 380px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      padding: 6px 14px; border-radius: 999px;
+      font-size: 0.85rem; font-weight: 600; margin-bottom: 16px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,.6); } 70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
+    h1 { font-size: 2.6rem; line-height: 1.15; margin-bottom: 8px; }
+    .role { font-size: 1.2rem; color: var(--primary); font-weight: 600; margin-bottom: 14px; }
+    .subtitle { font-size: 1.05rem; color: var(--muted); max-width: 620px; margin-bottom: 24px; }
+    .cta-group { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      padding: 10px 20px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem; transition: 0.2s;
+      display: inline-block; cursor: pointer;
+    }
+    .btn-primary { background: var(--primary); color: #0f172a; }
+    .btn-primary:hover { background: #7dd3fc; text-decoration: none; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid var(--surface-light); color: var(--text); }
+    .btn-outline:hover { background: var(--surface); text-decoration: none; transform: translateY(-2px); }
+    .btn-small { padding: 7px 14px; font-size: 0.85rem; }
+
+    .avatar {
+      width: 190px; height: 190px; border-radius: 50%;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 0 6px rgba(56,189,248,.12);
+      overflow: hidden; flex-shrink: 0;
+      background: var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.4rem; font-weight: 700; color: var(--primary);
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Stats strip */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-top: 40px; }
+    .stat { background: var(--surface); border-radius: 12px; padding: 16px; text-align: center; border: 1px solid rgba(255,255,255,.05); }
+    .stat strong { display: block; font-size: 1.4rem; color: var(--primary); }
+    .stat span { font-size: 0.82rem; color: var(--muted); }
+
+    /* Sections */
+    section { padding: 56px 0; border-bottom: 1px solid var(--surface); }
+    h2 { font-size: 1.6rem; margin-bottom: 8px; }
+    .section-sub { color: var(--muted); margin-bottom: 28px; font-size: 0.97rem; }
+
+    /* Cards */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .card {
+      background: var(--surface);
+      padding: 24px; border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(56,189,248,.4); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .card h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--primary); }
+    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 14px; }
+    .card ul { padding-left: 18px; color: #cbd5e1; font-size: 0.92rem; margin-bottom: 16px; }
+    .card li { margin-bottom: 6px; }
+    .meta { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+
+    /* Screenshots */
+    .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+    .shot {
+      aspect-ratio: 9 / 16; border-radius: 8px; overflow: hidden;
+      background: var(--bg); border: 1px dashed var(--surface-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--muted); text-align: center; padding: 6px;
+    }
+    .shot img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+    .card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+    /* Tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: var(--bg); color: var(--primary);
+      border: 1px solid var(--surface-light);
+      padding: 4px 10px; border-radius: 6px;
+      font-size: 0.8rem; font-weight: 500;
+    }
+
+    /* Skills bars */
+    .skill-row { margin-bottom: 12px; }
+    .skill-row .label { display: flex; justify-content: space-between; font-size: 0.88rem; color: #cbd5e1; margin-bottom: 4px; }
+    .bar { height: 6px; border-radius: 999px; background: var(--bg); overflow: hidden; }
+    .bar i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--primary), var(--accent)); width: 0; transition: width 1.2s ease; }
+
+    /* Contact */
+    .contact-box { text-align: center; }
+    .contact-box p { color: var(--muted); max-width: 520px; margin: 0 auto 22px; }
+    .contact-box .cta-group { justify-content: center; }
+
+    /* Footer */
+    footer { padding: 36px 0; text-align: center; color: var(--muted); font-size: 0.9rem; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.88); display: none; align-items: center; justify-content: center; z-index: 100; cursor: zoom-out; padding: 20px; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 100%; max-height: 100%; border-radius: 10px; }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2rem; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 0.82rem; }
+      .logo { display: none; }
+      .nav-inner { justify-content: center; }
+      .avatar { width: 140px; height: 140px; font-size: 2.6rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#top" class="logo">MA<span>.</span>dev</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="top">
+    <div class="container">
+      <div class="hero">
+        <div class="hero-text">
+          <span class="badge"><span class="dot"></span> Available for Software & IT Support Roles</span>
+          <h1>Muhamad Mbaraka Abdul</h1>
+          <p class="role">Flutter Developer · IT Support Engineer</p>
+          <p class="subtitle">
+            Bachelor of Information Technology graduate who builds cross-platform apps (Flutter, Dart, Kotlin, Supabase) and keeps networks running. I turn real business problems into working software, and I can troubleshoot the infrastructure it runs on.
+          </p>
+          <div class="cta-group">
+            <a href="mailto:misharym180@gmail.com" class="btn btn-primary">Email Me</a>
+            <!-- TODO: weka faili lako la CV kwenye folder moja na jina: Muhamad-Mbaraka-CV.pdf -->
+            <a href="assets/images/Muhamad-Mbaraka-CV.pdf" download class="btn btn-outline">Download CV</a>
+            <a href="tel:+255621582028" class="btn btn-outline">Call: 0621 582 028</a>
+          </div>
+        </div>
+
+        <!-- TODO: weka picha yako kama images/profile.jpg. Kama haipo, herufi "MA" zitaonekana. -->
+        <div class="avatar">
+          <img src="assets/images/profile.png" alt="Muhamad Mbaraka Abdul" onerror="this.remove()" />
+          <span style="position:absolute;z-index:-1">MA</span>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong>2</strong><span>Apps built</span></div>
+        <div class="stat"><strong>Flutter</strong><span>Main stack</span></div>
+        <div class="stat"><strong>BIT</strong><span>Kampala Int'l University</span></div>
+        <div class="stat"><strong>Tanzania</strong><span>Based in</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="reveal">Featured Software Projects</h2>
+      <p class="section-sub reveal">Apps I designed, built, and shipped.</p>
+      <div class="grid-2">
+
+        <div class="card reveal">
+          <h3>Falcon Business (POS & Business App)</h3>
+          <div class="meta">Built for small and medium businesses in East Africa</div>
+
+          <!-- TODO: weka screenshots zako: images/falcon-1.jpg, falcon-2.jpg, falcon-3.jpg -->
+          <div class="shots">
+            <div class="shot"><img src="assets/images/Dashboardf.jpg" alt="Falcon Business dashboard" onerror="this.parentNode.textContent='Dashboard screenshot'" /></div>
+            <div class="shot"><img src="assets/images/sales.jpg" alt="Falcon Business sales screen" onerror="this.parentNode.textContent='Sales screenshot'" /></div>
+            <div class="shot"><img src="assets/images/report.jpg" alt="Falcon Business receipt" onerror="this.parentNode.textContent='Receipt screenshot'" /></div>
+          </div>
+
+          <p>A cross-platform point-of-sale and business management app that helps shop owners record sales, track stock, and see how their business is doing.</p>
+          <ul>
+            <li>Responsive mobile and cross-platform interfaces with Flutter and Dart.</li>
+            <li>Supabase cloud backend for data management and sync.</li>
+            <li>Local SQLite storage so the app stays reliable on unstable connections.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Flutter</span>
+            <span class="tag">Dart</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">SQLite</span>
+          </div>
+          <div class="card-actions">
+            <!-- TODO: badilisha # na link halisi -->
+            <a href="#" target="_blank" rel="noopener" class="btn btn-primary btn-small">View Code</a>
+            <a href="#" target="_blank" rel="noopener" class="btn btn-outline btn-small">Live Demo</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h3>Intelligent Android File Finder & Sorter</h3>
+          <div class="meta">Native Android · Machine Learning concepts</div>
+
+          <!-- TODO: weka screenshots: images/filefinder-1.jpg, filefinder-2.jpg, filefinder-3.jpg -->
+          <div class="shots">
+            <div class="shot"><img src="assets/images/Dashboards.jpg" alt="File Finder home screen" onerror="this.parentNode.textContent='Home screenshot'" /></div>
+            <div class="shot"><img src="assets/images/search.jpg" alt="File Finder search" onerror="this.parentNode.textContent='Search screenshot'" /></div>
+        
+          </div>
+
+          <p>A smart file manager that finds files fast and sorts them automatically, so users spend less time digging through folders.</p>
+          <ul>
+            <li>Intelligent file search and automated sorting workflows.</li>
+            <li>Machine learning principles applied to improve file discovery.</li>
+            <li>Local Android database (Room/SQLite) for fast indexing.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Android</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">SQLite / Room</span>
+          </div>
+          <div class="card-actions">
+            <a href="#" target="_blank" rel="noopener" class="btn btn-primary btn-small">View Code</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="reveal">Practical IT & Networking Experience</h2>
+      <p class="section-sub reveal">Hands-on work fixing real problems, not just theory.</p>
+      <div class="card reveal">
+        <h3>Field Practical Training: Tabora Teachers College (TTC)</h3>
+        <p>Network troubleshooting, Ethernet cabling, and server-room infrastructure support.</p>
+        <ul>
+          <li>Diagnosed an office network outage, found a faulty Ethernet connection, repaired the cabling, and restored full connectivity.</li>
+          <li>Helped resolve network service interruptions by inspecting server-room hardware, restarting routers, and verifying connectivity.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">TCP/IP</span>
+          <span class="tag">IPv4 / IPv6</span>
+          <span class="tag">Subnetting</span>
+          <span class="tag">DHCP & DNS</span>
+          <span class="tag">NAT & Routing</span>
+          <span class="tag">Ethernet Troubleshooting</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="reveal">Technical Skills</h2>
+      <p class="section-sub reveal">Two sides of my work: building software and supporting infrastructure.</p>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>Application Development</h3>
+          <!-- TODO: rekebisha asilimia ziwe za kweli kwa kiwango chako -->
+          <div class="skill-row"><div class="label"><span>Flutter & Dart</span><span>90%</span></div><div class="bar"><i data-w="90"></i></div></div>
+          <div class="skill-row"><div class="label"><span>Kotlin / Android Studio</span><span>75%</span></div><div class="bar"><i data-w="75"></i></div></div>
+          <div class="skill-row"><div class="label"><span>Supabase</span><span>80%</span></div><div class="bar"><i data-w="80"></i></div></div>
+          <div class="skill-row"><div class="label"><span>SQLite / Room</span><span>80%</span></div><div class="bar"><i data-w="80"></i></div></div>
+        </div>
+        <div class="card reveal">
+          <h3>Networking & Tools</h3>
+          <div class="skill-row"><div class="label"><span>TCP/IP, DHCP, DNS, NAT</span><span>80%</span></div><div class="bar"><i data-w="80"></i></div></div>
+          <div class="skill-row"><div class="label"><span>Subnetting & Routing</span><span>75%</span></div><div class="bar"><i data-w="75"></i></div></div>
+          <div class="skill-row"><div class="label"><span>Git & GitHub</span><span>80%</span></div><div class="bar"><i data-w="80"></i></div></div>
+          <div class="skill-row"><div class="label"><span>Python & C++</span><span>65%</span></div><div class="bar"><i data-w="65"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2 class="reveal">Education</h2>
+      <div class="card reveal">
+        <h3>Bachelor of Information Technology</h3>
+        <div class="meta">Kampala International University · 2023 – 2026</div>
+        <p>Completed (certificate pending issuance).</p>
+        <!-- TODO: andika jina la final year project yako hapa -->
+        <ul>
+          <li><strong>Final year project:</strong> Smart file finder:is an intelligent Android Applicationdesigned to somplify file searching,discovery, and rganization. it uses machine learning concepts</li>
+          <li><strong>Focus areas:</strong> Application development, computer networking, databases.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="border-bottom:none">
+      <div class="contact-box reveal">
+        <h2>Let's work together</h2>
+        <p>I'm open to software development and IT support roles. Send me a message and I'll reply as soon as I can.</p>
+        <div class="cta-group">
+          <a href="mailto:misharym180@gmail.com" class="btn btn-primary">misharym180@gmail.com</a>
+          <a href="tel:+255621582028" class="btn btn-outline">+255 621 582 028</a>
+          <!-- TODO: weka link zako halisi -->
+          <a href="https://github.com/Alafasy4" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+          <a href="https://www.linkedin.com/in/muhammad-mubaarack-13959b426" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Muhamad Mbaraka Abdul · misharym180@gmail.com · +255 621 582 028</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox"><img alt="" /></div>
+
+  <script>
+    // Fade-in on scroll + animate skill bars
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('.bar i').forEach(b => b.style.width = b.dataset.w + '%');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Click a screenshot to enlarge it
+    const lb = document.getElementById('lightbox');
+    const lbImg = lb.querySelector('img');
+    document.querySelectorAll('.shot img').forEach(img => {
+      img.addEventListener('click', () => { lbImg.src = img.src; lb.classList.add('open'); });
+    });
+    lb.addEventListener('click', () => lb.classList.remove('open'));
+  </script>
+</body>
+</html>
